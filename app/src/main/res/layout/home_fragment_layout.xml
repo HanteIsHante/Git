@@ -39,18 +39,32 @@
             android:id="@+id/ReadTasks"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="读取" />
+            android:text="读取所有任务" />
 
         <Button
             android:id="@+id/deleteTaskByName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="删除 by name" />
+
         <Button
             android:id="@+id/deleteTaskById"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="删除 by ID" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ReadUnDoTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="读取unDo任务" />
     </LinearLayout>
 
     <ScrollView

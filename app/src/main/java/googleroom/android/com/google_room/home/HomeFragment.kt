@@ -34,6 +34,9 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
                 if (TextUtils.isEmpty(taskId.text.toString())) return
                 mHomePresenter.deleteTaskById(taskId.text.toString().toLong())
             }
+            ReadUnDoTasks -> {
+                mHomePresenter.getUnDoTasks()
+            }
         }
     }
 
@@ -61,6 +64,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
         isCompleted.setOnClickListener(this)
         deleteTaskById.setOnClickListener(this)
         deleteTaskByName.setOnClickListener(this)
+        ReadUnDoTasks.setOnClickListener(this)
     }
 
     private lateinit var mHomePresenter: HomeContract.Presenter

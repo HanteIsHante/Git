@@ -36,7 +36,12 @@ class TaskLocalDataSource(context: Context)
     }
 
     override fun queryUnDoTasks(callBack: TaskDataSource.QueryTasksCallBack) {
-        val tasks = taskDao.getTasks()
+        val tasks = taskDao.getUnDoTasks()
+        if (!tasks.isEmpty()) {
+            callBack.onSuccess(tasks)
+        } else {
+            callBack.onFail(404, "无查询数据")
+        }
     }
 
     override fun getTask(id: Long): Flowable<Task> {

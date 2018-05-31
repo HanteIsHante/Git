@@ -15,6 +15,10 @@ interface TaskDao {
     @Query("SELECT * FROM tasks")
     fun getTasks(): Flowable<List<Task>>
 
+    /*true = 1 false = 0*/
+    @Query("SELECT * FROM tasks WHERE isCompleted = 0")
+    fun getUnDoTasks(): MutableList<Task>
+
     @Query("SELECT * FROM tasks WHERE id = :taskId")
     fun getTaskById(taskId: Long): Flowable<Task>
 

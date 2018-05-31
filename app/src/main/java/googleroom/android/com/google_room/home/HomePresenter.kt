@@ -1,9 +1,10 @@
 package googleroom.android.com.google_room.home
 
+import googleroom.android.com.google_room.data.TaskDataSource
 import googleroom.android.com.google_room.data.TasksRepository
 import googleroom.android.com.google_room.data.bean.Task
 import googleroom.android.com.google_room.rxutil.BaseSchedulerProvider
-import io.reactivex.Completable
+import io.reactivex.*
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
@@ -41,7 +42,7 @@ class HomePresenter(tasksRepository: TasksRepository,
                 .observeOn(mBaseSchedulerProvider.ui())
                 .subscribe { list ->
                     kotlin.run {
-                        if (mView.isActive)  {
+                        if (mView.isActive) {
                             mView.showAllTask(list)
                         }
                     }
@@ -50,7 +51,38 @@ class HomePresenter(tasksRepository: TasksRepository,
     }
 
     override fun getUnDoTasks() {
-        TODO("=======^^=========================^^=====")
+        Observable.create(object : ObservableOnSubscribe<MutableList<Task>> {
+            override fun subscribe(e: ObservableEmitter<MutableList<Task>>) {
+                mTasksRepository.queryUnDoTasks(object : TaskDataSource.QueryTasksCallBack {
+                    override fun onSuccess(taskList: MutableList<Task>) {
+                        e.onNext(taskList)
+                    }
+
+                    override fun onFail(statusCode: Int, errorMsg: String) {
+
+                    }
+                })
+            }
+        }).subscribeOn(mBaseSchedulerProvider.io())
+                .observeOn(mBaseSchedulerProvider.ui())
+                .subscribe(object : Observer<MutableList<Task>> {
+                    override fun onError(e: Throwable) {
+                        if (!mView.isActive) return
+                        mView.onError(e.hashCode(), e.message.toString())
+                    }
+
+                    override fun onSubscribe(d: Disposable) {
+                        disposable = d
+                    }
+
+                    override fun onNext(t: MutableList<Task>) {
+                        if (!mView.isActive) return
+                        mView.showAllTask(t)
+                    }
+
+                    override fun onComplete() = Unit
+                })
+        mCompositeDisposable.add(disposable)
     }
 
     override fun saveTask(task: Task) {

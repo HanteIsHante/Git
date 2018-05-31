@@ -34,6 +34,9 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
                 if (TextUtils.isEmpty(taskId.text.toString())) return
                 mHomePresenter.deleteTaskById(taskId.text.toString().toLong())
             }
+            ReadUnDoTasks -> {
+                mHomePresenter.getUnDoTasks()
+            }
         }
     }
 
@@ -51,6 +54,10 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
         textView.text = ("任务名称:  \n  $str")
     }
 
+    override fun showText(msg: String) {
+        textView.text = msg
+    }
+
     override fun onCreateView() = Unit
 
     override fun getLayoutId(): Int = R.layout.home_fragment_layout
@@ -61,6 +68,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
         isCompleted.setOnClickListener(this)
         deleteTaskById.setOnClickListener(this)
         deleteTaskByName.setOnClickListener(this)
+        ReadUnDoTasks.setOnClickListener(this)
     }
 
     private lateinit var mHomePresenter: HomeContract.Presenter

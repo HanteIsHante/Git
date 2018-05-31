@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".home.HomeActivity"/>
+        <activity android:name=".douban.DouBanActivity"/>
     </application>
 
 </manifest>

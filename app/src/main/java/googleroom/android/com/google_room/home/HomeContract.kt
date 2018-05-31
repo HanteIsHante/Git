@@ -18,6 +18,8 @@ interface HomeContract {
         fun showAllTask(tasks: List<Task>)
 
         fun onError(statusCode: Int, errorTip: String)
+
+        fun showText(msg: String)
     }
 
     interface Presenter : BasePresenter {

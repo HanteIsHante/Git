@@ -54,6 +54,10 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
         textView.text = ("任务名称:  \n  $str")
     }
 
+    override fun showText(msg: String) {
+        textView.text = msg
+    }
+
     override fun onCreateView() = Unit
 
     override fun getLayoutId(): Int = R.layout.home_fragment_layout

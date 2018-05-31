@@ -1,4 +1,4 @@
-package googleroom.android.com.google_room.oknet
+package googleroom.android.com.google_room.net.ok
 
 import okhttp3.*
 import org.json.JSONException
@@ -33,9 +33,17 @@ class NetHttp : Interceptor, HostnameVerifier {
      * get 请求
      * 如果带有参数, 直接拼接在url 后面
      */
-    fun get(url: String, requestCallBack: HttpCallBack.JsonCallback) {
+    fun get(url: String, requestParams: List<Pair<String, String>>?,
+            requestCallBack: HttpCallBack.JsonCallback) {
+
+        val newUrlBuilder = HttpUrl.parse(url)!!.newBuilder()
+        if (requestParams != null) {
+            for (pair in requestParams.iterator()) {
+                newUrlBuilder.addQueryParameter(pair.first, pair.second)
+            }
+        }
         val getRequest = Request.Builder()
-                .url(url)
+                .url(newUrlBuilder.build())
                 .get()
                 .build()
         mOkHttpClient.newCall(getRequest).enqueue(object : Callback {
@@ -43,8 +51,17 @@ class NetHttp : Interceptor, HostnameVerifier {
 
             }
 
-            override fun onResponse(call: Call?, response: Response?) {
-
+            override fun onResponse(call: Call?, response: Response) {
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    try {
+                        val jsonObject = JSONObject(responseBody!!.string())
+                        requestCallBack.onResponse(jsonObject)
+                    } catch (e: Exception) {
+                    } finally {
+                        responseBody?.close()
+                    }
+                }
             }
         })
     }

@@ -13,6 +13,8 @@ interface DouBanContract {
     interface View : BaseView<Presenter> {
 
         var isActive: Boolean
+
+        fun showBooks()
     }
 
     interface Presenter : BasePresenter

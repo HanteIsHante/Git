@@ -8,9 +8,6 @@ import googleroom.android.com.google_room.data.TaskDataSource
 import googleroom.android.com.google_room.data.TasksRepository
 import googleroom.android.com.google_room.data.bean.Task
 import googleroom.android.com.google_room.file.FileOptions
-import googleroom.android.com.google_room.data.TaskDataSource
-import googleroom.android.com.google_room.data.TasksRepository
-import googleroom.android.com.google_room.data.bean.Task
 import googleroom.android.com.google_room.rxutil.BaseSchedulerProvider
 import io.reactivex.*
 import io.reactivex.disposables.CompositeDisposable
@@ -199,6 +196,4 @@ class HomePresenter(tasksRepository: TasksRepository,
                 })
                 .startDownload()
     }
-=======
->>>>>>> git/master
 }

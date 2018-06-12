@@ -54,16 +54,16 @@ dependencies {
     implementation "android.arch.persistence.room:rxjava2:1.1.0"
 
     /*--------rxpermissions2----------*/
-    compile 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar'
 
     /*-------------leakcanary-------------*/
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.4'
     releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
 
     /*--------okhttp-----------*/
-    compile 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     /*升级下载apk*/
-    compile 'com.github.maning0303:MNUpdateAPK:V1.1.8'
+    implementation 'com.github.maning0303:MNUpdateAPK:V1.1.8'
     /*自定义权限检测*/
     implementation 'com.github.HanteIsHante:downloadapk:0.0.2'
 }

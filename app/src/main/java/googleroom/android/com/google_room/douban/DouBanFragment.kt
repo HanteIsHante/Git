@@ -9,6 +9,9 @@ import googleroom.android.com.google_room.base.BaseFragment
  *  Desc:
  */
 class DouBanFragment : BaseFragment(), DouBanContract.View {
+    override fun showBooks() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     private lateinit var mPresenter: DouBanContract.Presenter
 

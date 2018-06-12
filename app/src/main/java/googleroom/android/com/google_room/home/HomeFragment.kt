@@ -69,10 +69,13 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
         textView.text = msg
     }
 
+<<<<<<< HEAD
     override fun showProgress(p0: Long, p1: Long) {
         tv_progress.text = (((p1 * 100 / p0).toInt()).toString() + "%")
     }
 
+=======
+>>>>>>> git/master
     override fun onCreateView() = Unit
 
     override fun getLayoutId(): Int = R.layout.home_fragment_layout
@@ -84,7 +87,10 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
         deleteTaskById.setOnClickListener(this)
         deleteTaskByName.setOnClickListener(this)
         ReadUnDoTasks.setOnClickListener(this)
+<<<<<<< HEAD
         update_app.setOnClickListener(this)
+=======
+>>>>>>> git/master
     }
 
     private lateinit var mHomePresenter: HomeContract.Presenter

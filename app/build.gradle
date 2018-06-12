@@ -62,10 +62,8 @@ dependencies {
 
     /*--------okhttp-----------*/
     compile 'com.squareup.okhttp3:okhttp:3.10.0'
-
     /*升级下载apk*/
     compile 'com.github.maning0303:MNUpdateAPK:V1.1.8'
-
     /*自定义权限检测*/
     implementation 'com.github.HanteIsHante:downloadapk:0.0.2'
 }

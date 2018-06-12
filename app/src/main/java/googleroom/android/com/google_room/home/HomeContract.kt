@@ -6,7 +6,6 @@ import googleroom.android.com.google_room.BaseView
 import googleroom.android.com.google_room.data.bean.Task
 
 /**
- *  Created By handan
  *  CreateDate: 2018/5/10
  *  Desc:
  */

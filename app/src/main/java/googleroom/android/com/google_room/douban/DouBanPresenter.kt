@@ -33,6 +33,7 @@ class DouBanPresenter(view: DouBanContract.View,
         mCompositeDisposable.clear()
     }
 
+
     fun getDouBanMovies() {
         Observable.create(object : ObservableOnSubscribe<JSONObject> {
             override fun subscribe(e: ObservableEmitter<JSONObject>) {

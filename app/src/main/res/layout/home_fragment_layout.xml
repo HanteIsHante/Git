@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="名称" />
+
+    <EditText
+        android:id="@+id/taskId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ID" />
+
+    <RadioButton
+        android:id="@+id/isCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/WriteTask"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="写入"
+            tools:ignore="MissingConstraints" />
+
+        <Button
+            android:id="@+id/ReadTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="读取所有任务" />
+
+        <Button
+            android:id="@+id/deleteTaskByName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除 by name" />
+
+        <Button
+            android:id="@+id/deleteTaskById"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除 by ID" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/ReadUnDoTasks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="读取unDo任务" />
+        <Button
+            android:id="@+id/update_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="更新apk" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="0%"
+        android:textColor="#535353"
+        android:textSize="50sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="TextView"
+            app:layout_constraintTop_toBottomOf="@+id/ReadTasks"
+            tools:layout_editor_absoluteX="122dp" />
+    </ScrollView>
+
+</LinearLayout>

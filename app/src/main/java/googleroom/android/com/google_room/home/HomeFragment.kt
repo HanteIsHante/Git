@@ -3,6 +3,7 @@ package googleroom.android.com.google_room.home
 import android.text.TextUtils
 import android.view.View
 import googleroom.android.com.google_room.R
+import googleroom.android.com.google_room.R.id.textView
 import googleroom.android.com.google_room.base.BaseFragment
 import googleroom.android.com.google_room.data.bean.Task
 import kotlinx.android.synthetic.main.home_fragment_layout.*
@@ -37,6 +38,17 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
             ReadUnDoTasks -> {
                 mHomePresenter.getUnDoTasks()
             }
+            update_app -> {
+//                mHomePresenter.updateApk(activity!!)
+                mHomePresenter.readFile(activity!!)
+//                mHomePresenter.writeFile(activity!!, "this is a dog")
+//                mHomePresenter.writeFile(activity!!, "this is a pig")
+//                mHomePresenter.writeFile(activity!!, "this is a cat")
+//                mHomePresenter.writeFile(activity!!, "this is a tiger")
+//                mHomePresenter.writeFile(activity!!, "this is a man")
+//                mHomePresenter.writeFile(activity!!, "this is a dog")
+//                mHomePresenter.writeFile(activity!!, "this is a dog")
+            }
         }
     }
 
@@ -58,6 +70,10 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
         textView.text = msg
     }
 
+    override fun showProgress(p0: Long, p1: Long) {
+        tv_progress.text = (((p1 * 100 / p0).toInt()).toString() + "%")
+    }
+
     override fun onCreateView() = Unit
 
     override fun getLayoutId(): Int = R.layout.home_fragment_layout
@@ -69,6 +85,7 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
         deleteTaskById.setOnClickListener(this)
         deleteTaskByName.setOnClickListener(this)
         ReadUnDoTasks.setOnClickListener(this)
+        update_app.setOnClickListener(this)
     }
 
     private lateinit var mHomePresenter: HomeContract.Presenter

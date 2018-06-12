@@ -26,12 +26,13 @@ class DouBanPresenter(view: DouBanContract.View,
 
 
     override fun subscribe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun unSubscribe() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        mCompositeDisposable.clear()
     }
+
 
     fun getDouBanMovies() {
         Observable.create(object : ObservableOnSubscribe<JSONObject> {

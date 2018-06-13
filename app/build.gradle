@@ -65,5 +65,5 @@ dependencies {
     /*升级下载apk*/
     implementation 'com.github.maning0303:MNUpdateAPK:V1.1.8'
     /*自定义权限检测*/
-    implementation 'com.github.HanteIsHante:downloadapk:0.0.2'
+    implementation 'com.github.HanteIsHante:downloadapk:0.0.3'
 }

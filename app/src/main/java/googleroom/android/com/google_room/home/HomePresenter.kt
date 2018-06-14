@@ -119,7 +119,7 @@ class HomePresenter(tasksRepository: TasksRepository,
 
     override fun writeFile(context: Context, msg: String) {
         val subscribe = Completable.fromAction {
-            FileOptions(context).writeFile(msg)
+            FileOptions(context).fileOutput(context, msg)
         }.subscribeOn(mBaseSchedulerProvider.io())
                 .subscribe()
         mCompositeDisposable.add(subscribe)

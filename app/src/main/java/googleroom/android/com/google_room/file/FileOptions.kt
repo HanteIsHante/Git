@@ -2,7 +2,6 @@ package googleroom.android.com.google_room.file
 
 import android.content.Context
 import android.os.Environment
-import android.util.Log
 import java.io.*
 
 /**
@@ -41,14 +40,6 @@ class FileOptions(context: Context) {
         return false
     }
 
-
-    /**
-     * 字节流
-     */
-    fun fileOutPutStream(msg: String) {
-        val fileOutputStream = FileOutputStream(file)
-    }
-
     /**
      * 读取文件
      */
@@ -57,7 +48,6 @@ class FileOptions(context: Context) {
         val bufferedReader = BufferedReader(fileReader)
         var stringBuffer = StringBuffer()
         while (bufferedReader.readLine() != null) {
-            Log.d("<----", "Read LOG: ${bufferedReader.readLine()}")
             stringBuffer = stringBuffer.append(bufferedReader.readLine() + "\n")
         }
         return stringBuffer
@@ -75,7 +65,6 @@ class FileOptions(context: Context) {
             val buffer = ByteArray(available)
             inputStream.read(buffer)
             stringBuffer = buffer.toString()
-            System.out.print("Read Content:  $buffer")
         } catch (_: Exception) {
         } finally {
             if (inputStream != null) {
@@ -85,24 +74,9 @@ class FileOptions(context: Context) {
         return stringBuffer
     }
 
-    fun write(writeMsg: String) {
-        var fileOutputStream: FileOutputStream? = null
-        try {
-            // 第二个参数设置为 true 表示添加在内容之后
-            fileOutputStream = FileOutputStream(file, true)
-
-
-        } catch (e: Exception) {
-        } finally {
-            if (fileOutputStream != null) {
-                fileOutputStream.close()
-            }
-        }
-
-    }
 
     /**
-     * 写入文件
+     * FileWriter 写入文件
      */
     fun writeFile(msg: String) {
         // 以追加方式, 第二个参数设置为 true 表示添加在内容之后
@@ -111,8 +85,8 @@ class FileOptions(context: Context) {
         try {
             fileWriter = FileWriter(file, true)
             bufferedWriter = BufferedWriter(fileWriter)
-            bufferedWriter.write("\r\n")
             bufferedWriter.write(msg)
+            bufferedWriter.write("\r\n")
         } catch (e: Exception) {
         } finally {
             if (bufferedWriter != null) {
@@ -122,6 +96,24 @@ class FileOptions(context: Context) {
             if (fileWriter != null) {
                 fileWriter.close()
             }
+        }
+    }
+
+    /**
+     * FileOutputStream 写入文件数据
+     */
+    fun fileOutput(context: Context
+                   , writeMsg: String) {
+        var outPutStream: FileOutputStream? = null
+
+        try {
+            outPutStream = context.openFileOutput(fileName, Context.MODE_APPEND)
+            outPutStream.write(writeMsg.toByteArray())
+            outPutStream.write("\r\n".toByteArray())
+            outPutStream.flush()
+        } catch (e: Exception) {
+        } finally {
+            outPutStream?.close()
         }
     }
 }

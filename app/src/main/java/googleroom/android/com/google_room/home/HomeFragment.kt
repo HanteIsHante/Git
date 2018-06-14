@@ -3,7 +3,6 @@ package googleroom.android.com.google_room.home
 import android.text.TextUtils
 import android.view.View
 import googleroom.android.com.google_room.R
-import googleroom.android.com.google_room.R.id.textView
 import googleroom.android.com.google_room.base.BaseFragment
 import googleroom.android.com.google_room.data.bean.Task
 import kotlinx.android.synthetic.main.home_fragment_layout.*
@@ -40,14 +39,14 @@ class HomeFragment : BaseFragment(), HomeContract.View, View.OnClickListener {
             }
             update_app -> {
 //                mHomePresenter.updateApk(activity!!)
-                mHomePresenter.readFile(activity!!)
-//                mHomePresenter.writeFile(activity!!, "this is a dog")
-//                mHomePresenter.writeFile(activity!!, "this is a pig")
-//                mHomePresenter.writeFile(activity!!, "this is a cat")
-//                mHomePresenter.writeFile(activity!!, "this is a tiger")
-//                mHomePresenter.writeFile(activity!!, "this is a man")
-//                mHomePresenter.writeFile(activity!!, "this is a dog")
-//                mHomePresenter.writeFile(activity!!, "this is a dog")
+//                mHomePresenter.readFile(activity!!)
+                mHomePresenter.writeFile(activity!!, "this is a dog 1")
+                mHomePresenter.writeFile(activity!!, "this is a pig 2")
+                mHomePresenter.writeFile(activity!!, "this is a cat 3")
+                mHomePresenter.writeFile(activity!!, "this is a tiger 4")
+                mHomePresenter.writeFile(activity!!, "this is a man 5")
+                mHomePresenter.writeFile(activity!!, "this is a dog 6")
+                mHomePresenter.writeFile(activity!!, "this is a dog 7")
             }
         }
     }
